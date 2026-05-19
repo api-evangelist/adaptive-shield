@@ -46,6 +46,10 @@ apis:
       - type: Authentication
         url: https://www.adaptive-shield.com/support
 common:
+  - type: GitHubOrganization
+    url: https://github.com/adaptiveshield
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/adaptiveshield
   - type: Website
     url: https://www.crowdstrike.com/platform/falcon-shield/
   - type: Portal
