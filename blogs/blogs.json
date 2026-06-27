@@ -2,13 +2,20 @@
   "repo": "adaptive-shield",
   "feeds": [
     {
-      "source": "https://www.adaptive-shield.com/blog/",
+      "source": "https://www.crowdstrike.com/en-us/blog/feed/",
       "feed_url": "https://www.crowdstrike.com/en-us/blog/feed/",
-      "title": "CrowdStrike Blog",
-      "saved": 5,
-      "method": "discovered"
+      "title": "",
+      "saved": 2,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.crowdstrike.com/platform/falcon-shield/",
+      "feed_url": "https://www.crowdstrike.com/platform/falcon-shield/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 21,
-  "fetched": "2026-06-21T17:00:00Z"
+  "post_count": 23,
+  "fetched": "2026-06-27T12:03:07Z"
 }
