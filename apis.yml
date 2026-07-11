@@ -46,6 +46,12 @@ apis:
       - type: Authentication
         url: https://www.adaptive-shield.com/support
 common:
+  - type: TrustCenter
+    url: security/adaptive-shield-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/adaptive-shield-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/adaptive-shield-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/adaptiveshield
   - type: LinkedIn
