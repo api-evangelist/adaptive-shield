@@ -1,0 +1,71 @@
+generated: '2026-08-30'
+method: searched
+provider: Adaptive Shield
+providerId: adaptive-shield
+source: >-
+  Registry searches against npm, PyPI, RubyGems, crates.io, NuGet, Maven Central, pkg.go.dev and
+  Splunkbase, plus the github.com/adaptiveshield account. Only one first-party distributable exists.
+summary: >-
+  Adaptive Shield never shipped a client SDK in any language package registry. The one first-party
+  distributable is a Splunk add-on, and its last release predates the CrowdStrike acquisition — no
+  release has been cut since 2024-08-29, while the API it consumes was deprecated 2026-01-11.
+packages:
+  - name: Adaptive Shield Add-on
+    id: TA-adaptive-shield-addon
+    registry: splunkbase
+    url: https://splunkbase.splunk.com/app/5726/
+    official: true
+    kind: integration-addon
+    language: python
+    version: 1.0.9
+    published: '2024-08-29'
+    downloads: 1086
+    description: >-
+      Splunk technology add-on that ingests Adaptive Shield security events and alerts into Splunk.
+      Not a client SDK — it is a one-way data connector.
+    note: >-
+      Latest release 1.0.9, published 2024-08-29 — before CrowdStrike completed the Adaptive Shield
+      acquisition and eighteen months before the API endpoints were deprecated on 2026-01-11. Splunkbase
+      records the listing metadata as touched 2026-04-30, but no new release was cut. install_method is
+      "rejected" for both single-instance and distributed deployment, and the add-on is not
+      cloud-compatible. Version and date read from the Splunkbase release API
+      (splunkbase.splunk.com/api/v1/app/5726/release/).
+registries_checked:
+  - registry: npm
+    result: none
+    note: >-
+      No first-party package. A search for "adaptive-shield" returns only unrelated packages
+      (adaptivecards, adaptive-expressions, adaptive-timeout).
+    version: null
+  - registry: pypi
+    result: none
+    note: pypi.org/pypi/adaptive-shield/json returns 404.
+    version: null
+  - registry: rubygems
+    result: none
+    version: null
+  - registry: crates.io
+    result: none
+    version: null
+  - registry: nuget
+    result: none
+    version: null
+  - registry: maven-central
+    result: none
+    version: null
+  - registry: pkg.go.dev
+    result: none
+    version: null
+  - registry: github
+    result: none
+    note: >-
+      github.com/adaptiveshield is a live personal account (renamed "Falcon Shield", Tel Aviv,
+      created 2020-10-11, profile updated 2026-08-26) with zero public repositories. There is no
+      Adaptive Shield GitHub organization — api.github.com/orgs/adaptiveshield returns 404.
+    version: null
+sdk_count: 0
+official_sdk_count: 0
+note: >-
+  sdk_count is 0 on purpose: the Splunk add-on is a data connector, not a client library. Recording
+  it as an SDK would credit Adaptive Shield with a developer-facing library it never published, so no
+  SDKs pointer is emitted in apis.yml.

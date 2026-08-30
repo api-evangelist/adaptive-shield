@@ -1,0 +1,59 @@
+generated: '2026-08-30'
+method: searched
+provider: Adaptive Shield
+providerId: adaptive-shield
+source: >-
+  Tines, Torq, Brinqa and Axonius integration documentation for the Adaptive Shield API, plus live
+  probes of api.adaptive-shield.com. No first-party auth page survives: the Adaptive Shield help
+  centre is closed and developer.adaptive-shield.com no longer resolves.
+docs: null
+summary: >-
+  A single API-key scheme. The key is generated per user inside the Adaptive Shield dashboard and
+  inherits that user's scope and permissions — there is no separate service principal, no OAuth
+  authorization server, and no scope vocabulary.
+schemes:
+  - id: api_key
+    type: apiKey
+    in: header
+    name: unknown
+    description: >-
+      Per-user API key ("access token") generated from the dashboard user profile → API tab →
+      Generate a new key. Every integrator that documents the connector asks only for the key and
+      the regional domain, and none of them names the header, so the exact header name is not
+      recorded here rather than guessed.
+    key_generation: >-
+      Adaptive Shield dashboard → user profile → API tab → Generate a new key → name the key → Create.
+    scope_model: >-
+      The key inherits the scope and permissions of the Adaptive Shield user account it was created
+      under. No independent scopes or permission grants are published.
+    evidence:
+      - source: https://explained.tines.com/en/articles/8572857-adaptive-shield-authentication-guide
+        note: Key generation flow and the two regional domains.
+      - source: https://docs.axonius.com/docs/adaptive-shield
+        note: >-
+          "API Key" as the required credential; the key must have permission to log in to the API
+          server and return data.
+      - source: https://docs.brinqa.com/docs/connectors/adaptive-shield/
+        note: Regional base URLs and the v1 endpoint set the key is used against.
+oauth2: false
+openid_connect: false
+mutual_tls: false
+regions:
+  - region: US
+    base_url: https://api.adaptive-shield.com
+  - region: EU
+    base_url: https://eu.api.adaptive-shield.com
+live_probe:
+  url: https://api.adaptive-shield.com/
+  status: 403
+  server: Adaptive
+  note: >-
+    Every unauthenticated path on both regional hosts returns an identical 134-byte 403 HTML body,
+    including the root. The host is up and enforcing auth; it does not emit a WWW-Authenticate
+    challenge, so no scheme can be confirmed from the wire.
+sso:
+  saml: true
+  provider_docs: https://learn.microsoft.com/en-us/entra/identity/saas-apps/adaptive-shield-tutorial
+  note: >-
+    SAML SSO for dashboard users (Microsoft Entra ID gallery application). This governs human login
+    to the console, not API authentication.

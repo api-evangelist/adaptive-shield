@@ -4,91 +4,47 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Adaptive Shield
 providerId: adaptive-shield
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-tags:
-  - SaaS Security
-  - SSPM
-  - Security Posture Management
-  - Cybersecurity
-  - Cloud Security
-  - Identity Management
-  - Compliance
-  - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Adaptive Shield API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Adaptive Shield REST API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Adaptive Shield REST API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Adaptive Shield REST API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Adaptive Shield REST API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Adaptive Shield REST API
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+modified: '2026-08-30'
+generated: '2026-08-30'
+method: searched
+source: >-
+  Integrator documentation for the Adaptive Shield API v1 (Brinqa, Axonius, Blink, Torq, Tines) and
+  live probes of api.adaptive-shield.com. Adaptive Shield's own API reference is offline.
+description: >-
+  Adaptive Shield publishes no rate limits for its REST API. This file records that absence,
+  replacing a scaffold written by the 2026-05-04 bulk sweep that invented per-tier limits, burst
+  ceilings and a header set the provider never documented.
+limit_count: 0
+limits: []
+headers: {}
+responseCodes: {}
+findings:
+  - finding: No published rate limit, quota or throttling policy.
+    detail: >-
+      Every surviving description of the API — the Brinqa, Axonius, Blink, Torq and Tines connector
+      docs, all of which quote the original reference — covers HTTPS-only transport, JSON responses,
+      API-key auth and endpoint shapes, and none of them mentions a limit, a window, a burst
+      allowance or a 429.
+    source: https://docs.brinqa.com/docs/connectors/adaptive-shield/
+    status: 200
+  - finding: Response headers cannot be observed.
+    detail: >-
+      api.adaptive-shield.com and eu.api.adaptive-shield.com return an identical 134-byte 403 to
+      every unauthenticated request including the root, emitting no RateLimit-*, X-RateLimit-* or
+      Retry-After header. No runtime rate-limit signal can be confirmed without a tenant key.
+    source: https://api.adaptive-shield.com/
+    status: 403
+  - finding: The reference that would have carried limits is decommissioned.
+    detail: >-
+      The API Reference article on adaptive-shield.zendesk.com sits behind a Cloudflare interstitial
+      and the help centre itself is closed — its root redirects to zendesk.com/help-center-closed/
+      and its Help Center API returns 404.
+    source: https://adaptive-shield.zendesk.com/hc/en-us/articles/20587718569757-API-Reference
+    status: 403
+note: >-
+  limit_count 0 means checked and nothing published, not unchecked. The previous version of this
+  file asserted 10/100/1000 requests-per-minute tiers and a full X-RateLimit-* header set that no
+  Adaptive Shield document has ever contained.
 maintainers:
   - FN: Kin Lane
     X-twitter: apievangelist

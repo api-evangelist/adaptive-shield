@@ -1,0 +1,24 @@
+generated: '2026-08-30'
+method: searched
+provider: Adaptive Shield
+providerId: adaptive-shield
+status: none
+summary: >-
+  Adaptive Shield ships no MCP server, hosted or local. No candidate tool list is derived either,
+  because there is no OpenAPI to derive one from.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+tools: []
+note: >-
+  Searched the registries and the provider's own surface: no npm or PyPI MCP package under an
+  Adaptive Shield or Falcon Shield name, no hosted endpoint advertised anywhere, and no
+  /.well-known/ai-plugin.json or agent card served by any Adaptive Shield host (all 403 or no
+  response — see well-known/adaptive-shield-well-known.yml). No endpoint URL is guessed here.
+  CrowdStrike, the acquirer, does publish MCP tooling for the Falcon platform; that is CrowdStrike's
+  product on CrowdStrike's hosts and is profiled in the crowdstrike repo, not attributed to
+  Adaptive Shield. No MCPServer pointer is emitted in apis.yml, because this file records an absence.

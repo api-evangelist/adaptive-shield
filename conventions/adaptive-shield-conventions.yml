@@ -1,0 +1,110 @@
+generated: '2026-08-30'
+method: searched
+provider: Adaptive Shield
+providerId: adaptive-shield
+source: >-
+  Integrator documentation for the Adaptive Shield API v1 (Brinqa, Axonius, Blink, Torq, Tines) and
+  live probes of api.adaptive-shield.com. Adaptive Shield's own API reference is offline, so every
+  convention below is either observed second-hand or honestly recorded as unknown.
+summary: >-
+  A small, account-scoped, read-oriented REST API over HTTPS returning JSON, authenticated by a
+  per-user API key. Very little of its runtime semantics was ever published, and what was published
+  is now unreachable — the reference article and developer portal are both gone.
+transport:
+  protocol: https
+  https_only: true
+  media_type: application/json
+  evidence: >-
+    "Adaptive Shield's API only responds to requests over HTTPS. Responses are sent in JSON format.
+    The API calls respond with appropriate HTTP status codes for all requests." — Adaptive Shield API
+    reference, as quoted by Brinqa connector documentation.
+base_urls:
+  - region: US
+    url: https://api.adaptive-shield.com
+  - region: EU
+    url: https://eu.api.adaptive-shield.com
+url_shape:
+  pattern: /api/v{version}/accounts/{accountId}/{resource}
+  note: >-
+    Every documented resource hangs off an account. Callers first GET /api/v1/accounts to resolve the
+    account id, then address resources beneath it.
+  observed_paths:
+    - GET /api/v1/accounts
+    - GET /api/v1/accounts/{accountId}/alerts
+    - GET /api/v1/accounts/{accountId}/integrations
+    - GET /api/v1/accounts/{accountId}/security_checks
+    - GET /api/v1/accounts/{accountId}/user_inventory
+    - GET /api/v1/accounts/{accountId}/device_inventory
+  note_on_paths: >-
+    Collected from integrator connectors, not from a provider-published spec. Treat as the observed
+    subset, not the full surface.
+authentication:
+  style: api-key
+  detail: See authentication/adaptive-shield-authentication.yml. Header name not published.
+versioning:
+  style: path
+  current: v1
+  detail: See lifecycle/adaptive-shield-lifecycle.yml — v1 is deprecated as of 2026-01-11.
+pagination:
+  style: unknown
+  params: []
+  note: >-
+    No pagination scheme is documented by any surviving source. Connectors filter by from/to date and
+    type on the alerts endpoint rather than by cursor or page.
+filtering:
+  supported: true
+  params:
+    - name: from date
+      applies: /alerts
+      description: Fetch alerts raised from a specified date.
+    - name: to date
+      applies: /alerts
+      description: Fetch alerts raised before a specified date.
+    - name: type
+      applies: /alerts
+      description: Fetch a specified alert type.
+  source: https://docs.blinkops.com/docs/integrations/adaptive-shield/actions/list-alerts
+field_expansion:
+  supported: unknown
+metadata:
+  supported: unknown
+request_id_tracing:
+  header: unknown
+  note: No correlation or request-id header is documented, and the API cannot be probed anonymously.
+errors:
+  envelope: unknown
+  rfc9457: false
+  note: >-
+    "The API calls respond with appropriate HTTP status codes for all requests" is the only published
+    statement about error handling. No error reference, problem-type registry or error-code list
+    survives, so errors/adaptive-shield-problem-types.yml is deliberately not written.
+rate_limit_signaling:
+  headers: []
+  status_on_exhaustion: unknown
+  note: See rate-limits/adaptive-shield-rate-limits.yml — no limits or headers are published.
+idempotency:
+  supported: na
+  header: null
+  note: >-
+    No idempotency mechanism is documented. Every operation reachable in the published surface is a
+    GET, so there is nothing for an idempotency key to protect.
+dry_run_mode:
+  supported: na
+  note: No write surface is documented, so there is nothing to rehearse.
+reversibility:
+  state: na
+  grade: na
+  note: >-
+    Every operation in the published Adaptive Shield API surface is a read — list accounts, alerts,
+    integrations, security checks, user inventory, device inventory. With no documented write, create,
+    delete or remediation-trigger operation there is no action for a caller to take back, so
+    reversibility does not apply rather than scoring zero. Remediation in Adaptive Shield is performed
+    in the console and in the connected SaaS application, not through this API. If a write surface
+    exists behind the 403 it is undocumented, and an undocumented write is worse than no write for an
+    agent: it can neither be rehearsed nor reversed.
+  operations: []
+cross_references:
+  authentication: authentication/adaptive-shield-authentication.yml
+  lifecycle: lifecycle/adaptive-shield-lifecycle.yml
+  rate_limits: rate-limits/adaptive-shield-rate-limits.yml
+  plans: plans/adaptive-shield-plans-pricing.yml

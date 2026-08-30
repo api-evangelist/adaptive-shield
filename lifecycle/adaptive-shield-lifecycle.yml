@@ -1,0 +1,70 @@
+generated: '2026-08-30'
+method: searched
+provider: Adaptive Shield
+providerId: adaptive-shield
+source: >-
+  Live probes of every Adaptive Shield host plus integrator documentation that consumed the API
+  (Axonius, Brinqa) — Adaptive Shield's own developer portal and help centre are both gone, so no
+  first-party versioning or deprecation page survives to cite.
+summary: >-
+  Adaptive Shield was acquired by CrowdStrike and rebranded to Falcon Shield. The standalone
+  Adaptive Shield REST API v1 is in end-of-life: its API reference host is decommissioned, its help
+  centre is closed, and integrators publish a dated deprecation of the endpoints. The API hosts
+  themselves are still up and still answer, but only to authenticated callers.
+versioning:
+  scheme: path
+  pattern: /api/v1/...
+  current: v1
+  policy_url: null
+  note: >-
+    Only v1 was ever published. No first-party versioning policy page is reachable; the developer
+    portal that would have carried it no longer resolves in DNS.
+deprecation:
+  status: deprecated
+  date: '2026-01-11'
+  scope: The Adaptive Shield REST API v1 endpoints, for organizations on legacy Adaptive Shield credentials.
+  statement: >-
+    "The Adaptive Shield API endpoints were deprecated on January 11, 2026."
+  statement_source: https://docs.axonius.com/docs/adaptive-shield
+  provider_published: false
+  note: >-
+    NOT a first-party statement. It is published by Axonius, an integrator that consumed the API, and
+    is the most specific dated deprecation available because Adaptive Shield's own reference is
+    offline. Brinqa carries the same direction without a date — "This version of the Adaptive Shield
+    connector is deprecated ... Please use the CrowdStrike SaaS Security connector for the full range
+    of features."
+  sunset_header: unknown
+  deprecation_header: unknown
+successor:
+  name: CrowdStrike Falcon platform / Falcon Shield (SaaS Security)
+  product_url: https://www.crowdstrike.com/en-us/platform/falcon-shield/
+  developer_url: https://developer.crowdstrike.com/api-reference/
+  note: >-
+    The successor API surface is CrowdStrike's, published on developer.crowdstrike.com under
+    CrowdStrike's own developer program. It is profiled in the crowdstrike repo, not here — this
+    repo scopes the Adaptive Shield contract only.
+retired_surfaces:
+  - surface: Developer portal
+    url: https://developer.adaptive-shield.com/
+    status: NXDOMAIN
+    evidence: No DNS A record; no Wayback Machine snapshot on record for the host.
+  - surface: API reference (help centre article)
+    url: https://adaptive-shield.zendesk.com/hc/en-us/articles/20587718569757-API-Reference
+    status: 403
+    evidence: >-
+      Cloudflare interstitial on the article; the help centre root redirects to
+      zendesk.com/help-center-closed/, and the Help Center API (/api/v2/help_center/en-us/articles.json)
+      returns 404 — the help centre has been decommissioned.
+  - surface: Marketing site sections (/support, /integrations, /resources)
+    url: https://www.adaptive-shield.com/support
+    status: '<no response>'
+    evidence: Connection opens, no bytes returned inside a 15s ceiling, on two separate attempts.
+status_page:
+  url: https://status.falcon.crowdstrike.com/
+  public: false
+  status: 302
+  note: Redirects to the Falcon console login. The status page is customer-gated, not public.
+sla:
+  published: false
+  note: No public SLA document for Falcon Shield or for the legacy Adaptive Shield API.
+deprecated_operations: []

@@ -4,143 +4,49 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Adaptive Shield
 providerId: adaptive-shield
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-08-30'
+generated: '2026-08-30'
+method: searched
+source: https://www.crowdstrike.com/en-us/pricing/
 tags:
   - SaaS Security
   - SSPM
   - Security Posture Management
   - Cybersecurity
-  - Cloud Security
-  - Identity Management
   - Compliance
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
-plans:
-  - id: adaptive-shield-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Adaptive Shield API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Adaptive Shield REST API
-  - id: adaptive-shield-pro
-    name: Professional
-    type: paid
-    description: Production tier for Adaptive Shield. Provides higher quotas, priority support, and access
-      to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Adaptive Shield REST API
-  - id: adaptive-shield-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Adaptive Shield. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Adaptive Shield REST API
+description: >-
+  Adaptive Shield — now CrowdStrike Falcon Shield — publishes no plans, no prices and no API quotas.
+  This file records that absence, replacing a scaffold written by the 2026-05-04 bulk sweep that
+  invented Free / Professional / Enterprise tiers with request quotas the provider never published.
+plan_count: 0
+plans: []
+pricing_model: contact-sales
+findings:
+  - finding: No pricing is published for Falcon Shield.
+    detail: >-
+      CrowdStrike's public pricing page lists per-device prices for the endpoint bundles only —
+      Falcon Go $7.99/device/month ($59.99/year), Falcon Pro $14.99 ($99.99), Falcon Enterprise
+      $19.99 ($184.99), and Falcon Complete Next-Gen MDR as contact-sales. Falcon Shield / SaaS
+      Security appears nowhere on that page.
+    source: https://www.crowdstrike.com/en-us/pricing/
+    status: 200
+  - finding: No API-tier pricing, quota or metering exists at any tier.
+    detail: >-
+      The Adaptive Shield REST API v1 was a feature of the platform subscription, not a separately
+      priced product. No free tier, no self-serve signup, and no request quota was ever published;
+      the API key is generated from inside an existing tenant's dashboard.
+    source: https://explained.tines.com/en/articles/8572857-adaptive-shield-authentication-guide
+    status: 200
+  - finding: The legacy Adaptive Shield pricing surface is gone.
+    detail: >-
+      www.adaptive-shield.com now 301s to www.crowdstrike.com/en-us/platform/falcon-shield/, which
+      offers a demo request rather than a price.
+    source: https://www.adaptive-shield.com/
+    status: 200
+note: >-
+  plan_count 0 is the honest reading, not a gap in the search: an enterprise security platform sold
+  through a sales motion. The previous version of this file asserted a 1,000 request/month free tier
+  and a 100,000 request/month professional tier that no Adaptive Shield document has ever contained.
 maintainers:
   - FN: Kin Lane
     X-twitter: apievangelist

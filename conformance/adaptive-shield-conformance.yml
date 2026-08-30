@@ -1,0 +1,79 @@
+generated: '2026-08-30'
+method: searched
+provider: Adaptive Shield
+providerId: adaptive-shield
+source: >-
+  CrowdStrike Trust Center (trust.crowdstrike.com), CrowdStrike security.txt, and integrator
+  documentation describing the Adaptive Shield API v1. No Adaptive Shield contract is published, so
+  nothing below is asserted from a spec.
+summary: >-
+  Adaptive Shield's compliance posture is real and inherited from CrowdStrike; its API conformance
+  posture is essentially empty. There is no OpenAPI, no OAuth, no RFC 9457 error format, and no
+  documented pagination or idempotency convention to conform to anything.
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: >-
+      Authentication is a per-user API key generated in the dashboard. No authorization server, token
+      endpoint or scope vocabulary is published, and /.well-known/oauth-authorization-server returns
+      403 on both API hosts.
+  - id: oidc
+    conforms: false
+    evidence: >-
+      /.well-known/openid-configuration returns 403 on api.adaptive-shield.com and
+      eu.api.adaptive-shield.com. SAML SSO exists for console login (Microsoft Entra ID gallery app),
+      not OIDC, and it does not govern API access.
+  - id: rfc9457
+    conforms: false
+    evidence: >-
+      No problem+json media type or error schema is documented. The only published statement is that
+      the API "respond[s] with appropriate HTTP status codes for all requests".
+  - id: pagination
+    conforms: false
+    evidence: No pagination scheme is documented by any surviving source; connectors filter by date and type.
+  - id: idempotency
+    conforms: na
+    evidence: >-
+      No write surface is documented — every observed operation is a GET — so idempotency has nothing
+      to protect.
+  - id: openapi
+    conforms: false
+    evidence: >-
+      No OpenAPI or Swagger document is served from any Adaptive Shield host. Every spec path probed
+      on api.adaptive-shield.com and eu.api.adaptive-shield.com returns the same 134-byte 403.
+  - id: soc2
+    conforms: true
+    evidence: >-
+      SOC 2 listed on the CrowdStrike Trust Center, which now covers the Falcon Shield product line.
+    source: https://trust.crowdstrike.com/
+  - id: iso27001
+    conforms: true
+    evidence: ISO/IEC 27001 (and 27017) listed on the CrowdStrike Trust Center.
+    source: https://trust.crowdstrike.com/
+  - id: pci-dss
+    conforms: true
+    evidence: PCI DSS listed on the CrowdStrike Trust Center.
+    source: https://trust.crowdstrike.com/
+  - id: fedramp
+    conforms: true
+    evidence: FedRAMP listed on the CrowdStrike Trust Center.
+    source: https://trust.crowdstrike.com/
+  - id: gdpr
+    conforms: true
+    evidence: >-
+      GDPR posture published on the CrowdStrike Trust Center; Adaptive Shield ships a dedicated EU
+      regional API host (eu.api.adaptive-shield.com) for data residency.
+    source: https://trust.crowdstrike.com/
+  - id: csa-star
+    conforms: true
+    evidence: CSA STAR listed on the CrowdStrike Trust Center.
+    source: https://trust.crowdstrike.com/
+domain_standard:
+  applicable: false
+  market: SaaS Security Posture Management (SSPM)
+  note: >-
+    SSPM has no adopted interchange standard for a posture-management API — no SCIM URN, OData
+    $metadata surface, OCSF schema binding, STIX/TAXII channel or equivalent is declared by any
+    Adaptive Shield surface, and none is expected of the category. Recorded as not applicable rather
+    than as a failure. If a domain standard were to attach here it would most plausibly be OCSF for
+    the alert payloads; nothing in the published surface declares it.

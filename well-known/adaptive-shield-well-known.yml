@@ -1,0 +1,96 @@
+generated: '2026-08-30'
+method: probed
+source: >-
+  Live unauthenticated GET of every /.well-known/ path on each Adaptive Shield host named in
+  apis.yml, plus www.crowdstrike.com — the host adaptive-shield.com now 301s to, following
+  CrowdStrike's acquisition and the rebrand of the product to Falcon Shield.
+provider: Adaptive Shield
+providerId: adaptive-shield
+note: >-
+  Neither Adaptive Shield API host serves any /.well-known/ document: api.adaptive-shield.com and
+  eu.api.adaptive-shield.com answer 403 Forbidden (server: Adaptive) to every unauthenticated
+  request, including the root, so no path can be distinguished as present or absent. The marketing
+  host www.adaptive-shield.com did not respond at all on any /.well-known/ path (connection opened,
+  no bytes returned inside 8s) although its root 301s to CrowdStrike. The only served document in
+  this set is the security.txt on www.crowdstrike.com, which is CrowdStrike's corporate disclosure
+  file and now covers the Falcon Shield product line; it is saved verbatim and is what the
+  VulnerabilityDisclosure artifact in this repo is built from.
+hosts:
+  - host: api.adaptive-shield.com
+    note: Live API host. Blanket 403 on every unauthenticated path including /.
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/oauth-protected-resource
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/ai-plugin.json
+        status: 403
+      - path: /.well-known/agent-card.json
+        status: 403
+      - path: /.well-known/agent.json
+        status: 403
+  - host: eu.api.adaptive-shield.com
+    note: EU regional API host. Identical blanket 403 posture.
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/oauth-protected-resource
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/ai-plugin.json
+        status: 403
+      - path: /.well-known/agent-card.json
+        status: 403
+      - path: /.well-known/agent.json
+        status: 403
+  - host: www.adaptive-shield.com
+    note: >-
+      Legacy marketing host. Root 301s to www.crowdstrike.com/en-us/platform/falcon-shield/, but
+      every /.well-known/ path hangs with no response inside an 8s ceiling.
+    documents:
+      - path: /.well-known/security.txt
+        status: '<no response>'
+      - path: /.well-known/openid-configuration
+        status: '<no response>'
+      - path: /.well-known/oauth-authorization-server
+        status: '<no response>'
+      - path: /.well-known/oauth-protected-resource
+        status: '<no response>'
+      - path: /.well-known/api-catalog
+        status: '<no response>'
+      - path: /.well-known/ai-plugin.json
+        status: '<no response>'
+      - path: /.well-known/agent-card.json
+        status: '<no response>'
+      - path: /.well-known/agent.json
+        status: '<no response>'
+  - host: www.crowdstrike.com
+    note: >-
+      Canonical website for the product since the rebrand to Falcon Shield. Serves a real
+      security.txt; every other probed path returns the site 404 page as text/html.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        content_type: text/plain
+        file: well-known/adaptive-shield-security.txt
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
