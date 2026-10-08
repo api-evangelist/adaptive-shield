@@ -78,6 +78,10 @@ apis:
     url: rate-limits/adaptive-shield-rate-limits.yml
   baseURL: https://api.adaptive-shield.com
 common:
+- type: RateLimits
+  url: rate-limits/adaptive-shield-rate-limits.yml
+- type: FinOps
+  url: finops/adaptive-shield-finops.yml
 - type: TrustCenter
   url: security/adaptive-shield-trust-center.yml
 - type: VulnerabilityDisclosure
