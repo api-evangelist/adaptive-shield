@@ -1,4 +1,4 @@
-# Adaptive Shield (adaptive-shield)
+# Adaptive Shield
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,81 +66,107 @@
 
 Adaptive Shield (now CrowdStrike Falcon Shield) is a SaaS Security Posture Management (SSPM) platform that continuously monitors, remediates, and governs SaaS application security configurations and identity risks. Acquired by CrowdStrike, the platform covers 200+ SaaS integrations with over 3,500 built-in security checks, helping organizations detect misconfigurations, manage human and non-human identities, discover shadow applications, and maintain compliance across their entire SaaS stack. The REST API (v1) enables programmatic access to alerts, user inventory, device inventory, integrations, security checks, and compliance data.
 
-**URL:** [https://www.crowdstrike.com/platform/falcon-shield/](https://www.crowdstrike.com/platform/falcon-shield/)
+**Areas:** SaaS Security · SSPM · Security Posture Management · Cybersecurity · Cloud Security · Identity and Access Management · Compliance
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Adaptive Shield on APIs.io
 
-## Tags:
+Everything profiled for Adaptive Shield is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/adaptive-shield/](https://apis.io/providers/adaptive-shield/)** — or go straight to one of the APIs or properties below.
 
- - SaaS Security, SSPM, Security Posture Management, Cybersecurity, Cloud Security, Identity Management, Compliance
+### APIs (1)
 
-## Timestamps
+- [Adaptive Shield REST API](https://apis.io/apis/adaptive-shield/adaptive-shield-api/) — The Adaptive Shield REST API v1 provides programmatic access to SaaS security posture data including alerts, user and device inventory, integration…
 
-- **Created:** 2026-03-27
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Adaptive Shield REST API
-The Adaptive Shield REST API v1 provides programmatic access to SaaS security posture data including alerts, user and device inventory, integration configurations, security check results, violations, and compliance controls. Authentication uses a per-user API key (access token). Regional endpoints are available for US (api.adaptive-shield.com) and EU (eu.api.adaptive-shield.com) regions.
+#### Security (4)
 
-**Human URL:** [https://www.crowdstrike.com/platform/falcon-shield/](https://www.crowdstrike.com/platform/falcon-shield/)
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags:
+- [Adaptive Shield Authentication](https://apis.io/security/adaptive-shield/adaptive-shield-authentication/)
+- [Adaptive Shield Domain Security](https://apis.io/security/adaptive-shield/adaptive-shield-domain-security/)
+- [Adaptive Shield Trust Center](https://apis.io/security/adaptive-shield/adaptive-shield-trust-center/)
+- [Adaptive Shield Vulnerability Disclosure](https://apis.io/security/adaptive-shield/adaptive-shield-vulnerability-disclosure/)
 
- - SaaS Security, SSPM, REST API, Alerts, Compliance
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://www.crowdstrike.com/platform/falcon-shield/)
-- [Authentication](https://www.adaptive-shield.com/support)
+- [Adaptive Shield Plans Pricing](https://apis.io/plans/adaptive-shield/adaptive-shield-plans-pricing/)
 
-## Common Properties
+#### Rate limits (1)
 
-- [Website](https://www.crowdstrike.com/platform/falcon-shield/)
-- [Portal](https://www.crowdstrike.com/platform/falcon-shield/)
-- [Blog](https://www.adaptive-shield.com/blog/)
-- [Resources](https://www.adaptive-shield.com/resources)
-- [Integrations](https://www.adaptive-shield.com/integrations)
-- [Support](https://www.adaptive-shield.com/support)
+Published request limits.
 
-## Features
+- [Adaptive Shield Rate Limits](https://apis.io/rate-limits/adaptive-shield/adaptive-shield-rate-limits/)
 
-| Name | Description |
-|------|-------------|
-| SaaS Misconfiguration Detection | Continuously monitors 200+ SaaS applications with 3,500+ built-in security checks to detect and remediate misconfigurations that expose organizations to security risks. |
-| Identity And Access Governance | Manages both human and non-human identities (NHI) across SaaS platforms, detecting over-privileged accounts and suspicious access patterns. |
-| Shadow App Discovery | Discovers unsanctioned and shadow SaaS applications connected to the organization's environment, providing visibility into unauthorized integrations. |
-| AI Agent Visibility And Control | Provides visibility into and governance over AI agents operating within enterprise SaaS platforms including Microsoft 365, Salesforce, and OpenAI. |
-| Compliance Monitoring | Tracks compliance posture across SaaS applications against frameworks such as SOC 2, ISO 27001, GDPR, and HIPAA using automated security check mappings. |
-| REST API Access | Public REST API v1 with API key authentication enables programmatic access to alerts, user/device inventory, integration data, security check results, violations, and compliance controls. US and EU regional endpoints available. |
-| SIEM And Platform Integrations | Integrates with SIEM platforms (Splunk, Datadog), security platforms (CrowdStrike Falcon), and vulnerability management platforms via API and native connectors. |
+#### FinOps (1)
 
-## Use Cases
+What the API costs to run, by operation.
 
-| Name | Description |
-|------|-------------|
-| SaaS Security Posture Management | Security teams can continuously monitor and remediate misconfigurations across the organization's entire SaaS stack from a single dashboard. |
-| Identity Risk Detection | Detect and remediate over-privileged users, dormant accounts, and suspicious login behavior across all connected SaaS applications. |
-| Compliance Audit Automation | Automate compliance evidence collection and posture monitoring for SOC 2, ISO 27001, GDPR, and other frameworks across SaaS applications. |
-| Third-Party App Risk Management | Identify and assess risk from third-party OAuth apps and browser extensions connected to critical SaaS platforms. |
-| Security Operations Integration | Pull SaaS security alerts and posture data into SIEM and SOAR platforms via the REST API for unified security operations workflows. |
+- [Adaptive Shield Finops](https://apis.io/finops/adaptive-shield/adaptive-shield-finops/)
 
-## Integrations
+## Where to find this API
 
-| Name | Description |
-|------|-------------|
-| Microsoft 365 | SaaS security monitoring for Microsoft 365 suite including Exchange, Teams, SharePoint, and OneDrive. |
-| Salesforce | Security posture monitoring and misconfiguration detection for Salesforce CRM. |
-| Slack | Configuration monitoring and security checks for Slack workspace settings. |
-| Zoom | Security configuration monitoring for Zoom video conferencing accounts. |
-| Okta | Identity provider integration for user access and authentication configuration monitoring. |
-| Datadog | Sends SaaS posture alerts as Datadog Events via OAuth integration. |
-| Splunk | Splunk add-on for ingesting Adaptive Shield security events and alerts. |
-| CrowdStrike Falcon | Native integration with CrowdStrike Falcon platform following acquisition. |
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-## Maintainers
+- [Website](https://www.crowdstrike.com/en-us/platform/falcon-shield/)
+- [Support](https://supportportal.crowdstrike.com/)
+- [Blog](https://www.crowdstrike.com/en-us/blog/)
+- [Terms of service](https://www.crowdstrike.com/en-us/legal/terms-conditions/)
+- [Privacy policy](https://www.crowdstrike.com/en-us/legal/privacy-notice/)
+- [GitHub](https://github.com/adaptiveshield)
 
-**FN:** Kin Lane
+## API Evangelist rating
 
-**Email:** info@apievangelist.com
+**Kin Score 28.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 36.8 |
+
+**Agent readiness 5.0** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/adaptive-shield/](https://apis.io/providers/adaptive-shield/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Adaptive Shield: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/adaptive-shield/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
